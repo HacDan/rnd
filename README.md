@@ -15,6 +15,7 @@ rnd -hex -b 128
 # Produce a base62 32-byte (256-bit) string with the prefix 'gho_'
 rnd -62 -B 32 -prefix gho_
 ```
+### bits to bytes == /4
 <!--Real README starts here  - ^ Dev Notes -->
 # rnd
 
