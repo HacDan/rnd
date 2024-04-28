@@ -3,8 +3,8 @@ package generator
 import (
 	"crypto/rand"
 	"encoding/hex"
-	"strconv"
-	"strings"
+	"fmt"
+	"math/big"
 )
 
 // GenerateRandomASCIIString returns a securely generated random ASCII string.
@@ -29,28 +29,60 @@ func GenerateRandomStringBase62(length int, prefix string) (string, error) {
 }
 
 func GenerateRandomStringBase62Lower(length int, prefix string) (string, error) {
-	s, err := GenerateRandomStringBase62(length, prefix)
-	if err != nil {
+	letters := "0123456789abcdefghijklmnopqrstuvwxyz"
+	if len(prefix) > 0 {
+		length = length - len(prefix)
+	}
+	bytes := make([]byte, length)
+	if _, err := rand.Read(bytes); err != nil {
 		return "", err
 	}
-	return strings.ToLower(s), nil
+	for i, b := range bytes {
+		bytes[i] = letters[b%byte(len(letters))]
+	}
+
+	return prefix + string(bytes), nil
 }
 
-func GenerateRandomNum(length int) (int, error) {
-	numbers := "0123456789"
+func GeneratePassword(length int) (string, error) {
+	letters := `0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz~!@#$%^&*()_-+={[}]|\:;"'<,>.?/`
 
 	bytes := make([]byte, length)
 	if _, err := rand.Read(bytes); err != nil {
-		return -1, err
+		return "", err
 	}
 	for i, b := range bytes {
-		bytes[i] = numbers[b%byte(len(numbers))]
+		bytes[i] = letters[b%byte(len(letters))]
 	}
-	i, err := strconv.Atoi(string(bytes))
-	if err != nil {
-		return -1, nil
+
+	return string(bytes), nil
+}
+
+func GenerateRandomNum(length int) (int, error) {
+	fmt.Println("Length: ", length)
+	b := make([]int, length)
+
+	for i := 0; i < length; i++ {
+		x, err := rand.Int(rand.Reader, big.NewInt(9))
+		if err != nil {
+			return -1, err
+		}
+		b = append(b, int(x.Int64()))
 	}
+
+	i := sliceToInt(b)
+	fmt.Println(b)
 	return i, nil
+}
+
+func sliceToInt(s []int) int {
+	res := 0
+	op := 1
+	for i := len(s) - 1; i >= 0; i-- {
+		res += s[i] * op
+		op *= 10
+	}
+	return res
 }
 
 func GenerateRandomHex(length int) (string, error) {

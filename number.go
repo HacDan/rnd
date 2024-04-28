@@ -8,18 +8,18 @@ import (
 	"github.com/urfave/cli/v2"
 )
 
-func number(c *cli.Context) error {
+func Number(c *cli.Context) error {
 	if !c.Args().Present() {
 		return errors.New("No arguments present") //TODO: better error messages
 	}
 
 	length := c.Int("length")
 
-	s, err := generator.GenerateRandomNum(length)
+	i, err := generator.GenerateRandomNum(length)
 	if err != nil {
 		return err
 	}
 
-	fmt.Println(s) // TODO: Change to different output writer?
+	fmt.Println(i) // TODO: Change to different output writer?
 	return nil
 }
