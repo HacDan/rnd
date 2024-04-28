@@ -69,8 +69,17 @@ func main() {
 		{
 			Name:    "password",
 			Aliases: []string{"pass"},
-			Usage:   "Generate a random hex string",
+			Usage:   "Generate a random password",
 			Action:  Password,
+			Flags: []cli.Flag{
+				&lengthFlag,
+			},
+		},
+		{
+			Name:    "base32",
+			Aliases: []string{"b32"},
+			Usage:   "Generate a base32 string",
+			Action:  Base32,
 			Flags: []cli.Flag{
 				&lengthFlag,
 			},

@@ -28,6 +28,19 @@ func GenerateRandomStringBase62(length int, prefix string) (string, error) {
 	return prefix + string(bytes), nil
 }
 
+func GenerateBase32(length int) (string, error) {
+	letters := "0123456789ABCDEFGHJKMNPQRSTVWXYZ"
+	bytes := make([]byte, length)
+	if _, err := rand.Read(bytes); err != nil {
+		return "", err
+	}
+	for i, b := range bytes {
+		bytes[i] = letters[b%byte(len(letters))]
+	}
+
+	return string(bytes), nil
+}
+
 func GenerateRandomStringBase62Lower(length int, prefix string) (string, error) {
 	letters := "0123456789abcdefghijklmnopqrstuvwxyz"
 	if len(prefix) > 0 {
