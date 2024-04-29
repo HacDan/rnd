@@ -19,6 +19,21 @@ func main() {
 		Aliases: []string{"l"},
 		Usage:   "length",
 	}
+	lowerFlag := cli.BoolFlag{
+		Name:    "lower",
+		Aliases: []string{"c"},
+		Usage:   "lower",
+	}
+	symbolFlag := cli.BoolFlag{
+		Name:    "symbols",
+		Aliases: []string{"s"},
+		Usage:   "symbols",
+	}
+	numberFlag := cli.BoolFlag{
+		Name:    "numbers",
+		Aliases: []string{"n"},
+		Usage:   "numbers",
+	}
 	prefixFlag := cli.StringFlag{
 		Name:    "prefix",
 		Aliases: []string{"p"},
@@ -44,6 +59,7 @@ func main() {
 			Action:  Base62,
 			Flags: []cli.Flag{
 				&lengthFlag,
+				&lowerFlag,
 				&prefixFlag,
 			},
 		},
@@ -73,6 +89,8 @@ func main() {
 			Action:  Password,
 			Flags: []cli.Flag{
 				&lengthFlag,
+				&numberFlag,
+				&symbolFlag,
 			},
 		},
 		{

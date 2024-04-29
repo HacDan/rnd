@@ -9,8 +9,10 @@ import (
 
 func Password(c *cli.Context) error {
 	length := c.Int("length")
+	withSymbols := c.Bool("symbols")
+	withNumbers := c.Bool("numbers")
 
-	s, err := generator.GeneratePassword(length)
+	s, err := generator.GeneratePassword(length, withNumbers, withSymbols)
 	if err != nil {
 		return err
 	}
