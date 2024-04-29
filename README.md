@@ -1,22 +1,3 @@
-
-### Notes
-
-[Secure functions for generating random strings] (https://gist.github.com/denisbrodbeck/635a644089868a51eccd6ae22b2eb800)
-
-### Basic Usage - Examples to build interface off from
-
-```sh
-# Produce a base62 string with 32 characters
-rnd -alphanum -s 32
-
-# Produce a 128-bit hex string
-rnd -hex -b 128
-
-# Produce a base62 32-byte (256-bit) string with the prefix 'gho_'
-rnd -62 -B 32 -prefix gho_
-```
-### bits to bytes == /4
-<!--Real README starts here  - ^ Dev Notes -->
 # rnd
 
 Random String Generator - Written in Go
@@ -29,8 +10,7 @@ An in-depth paragraph about your project and overview of use.
 
 ### Dependencies
 
-* Describe any prerequisites, libraries, OS version, etc., needed before installing program.
-* ex. Windows 10
+* [urfave/cli](https://github.com/urfave/cli)
 
 ### Installing
 
