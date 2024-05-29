@@ -4,8 +4,6 @@ Random String Generator - Written in Go
 
 ## Description
 
-An in-depth paragraph about your project and overview of use.
-
 ## Getting Started
 
 ### Dependencies
@@ -21,16 +19,7 @@ go install github.com/hacdan/rnd
 
 ### Executing program
 
-* How to run the program
-* Step-by-step bullets
-```
-code blocks for commands
-```
-
-## Help
-
-Any advise for common problems or issues.
-```
+```sh
 NAME:
    rnd - Random String & Number Generator
 
@@ -53,6 +42,10 @@ GLOBAL OPTIONS:
    --version, -v  print the version
 
 ```
+
+## Help
+
+If you need help or find a bug, please open an issue!
 
 ## Authors
 
