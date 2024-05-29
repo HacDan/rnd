@@ -15,7 +15,9 @@ An in-depth paragraph about your project and overview of use.
 ### Installing
 
 * How/where to download your program
-* Any modifications needed to be made to files/folders
+```sh
+go install github.com/hacdan/rnd
+```
 
 ### Executing program
 
@@ -29,21 +31,36 @@ code blocks for commands
 
 Any advise for common problems or issues.
 ```
-command to run if program contains helper info
+NAME:
+   rnd - Random String & Number Generator
+
+USAGE:
+   rnd [global options] command [command options] 
+
+VERSION:
+   0.1.0
+
+COMMANDS:
+   base62, b62     Generate a base62 string
+   number, n       Generate a random number
+   hex,            Generate a random hex string
+   password, pass  Generate a random password
+   base32, b32     Generate a base32 string
+   help, h         Shows a list of commands or help for one command
+
+GLOBAL OPTIONS:
+   --help, -h     show help
+   --version, -v  print the version
+
 ```
 
 ## Authors
 
-Contributors names and contact info
-
-ex. Dominique Pizzie  
-ex. [@DomPizzie](https://twitter.com/dompizzie)
+David McClellan
+[@_hacdan](https://x.com/_hacdan)
 
 ## Version History
 
-* 0.2
-    * Various bug fixes and optimizations
-    * See [commit change]() or See [release history]()
 * 0.1
     * Initial Release
 
@@ -51,11 +68,3 @@ ex. [@DomPizzie](https://twitter.com/dompizzie)
 
 This project is licensed under the [NAME HERE] License - see the LICENSE.md file for details
 
-## Acknowledgments
-
-Inspiration, code snippets, etc.
-* [awesome-readme](https://github.com/matiassingers/awesome-readme)
-* [PurpleBooth](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)
-* [dbader](https://github.com/dbader/readme-template)
-* [zenorocha](https://gist.github.com/zenorocha/4526327)
-* [fvcproductions](https://gist.github.com/fvcproductions/1bfc2d4aecb01a834b46)
